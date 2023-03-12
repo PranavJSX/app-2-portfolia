@@ -1,5 +1,6 @@
 
 import streamlit as st
+import pandas
 
 st.set_page_config(layout="wide")
 
@@ -15,3 +16,18 @@ with col2:
               "Currently I am working for an insurance client in my current company and looking " \
               "to expand my skills for not just my proffesional growth but also my personal growth as well"
     st.write(content)
+
+content2 = "Below you can fund some of the apps I have built in Python . Fell free to contact me."
+st.write(content2)
+
+col3, col4 = st.columns(2)
+
+df = pandas.read_csv("data.csv", sep=";")
+# print(df)
+with col3:
+    for index, row in df[:10].iterrows():
+        st.header(row['title'])
+
+with col4:
+    for index, row in df[10:].iterrows():
+        st.header(row['title'])
